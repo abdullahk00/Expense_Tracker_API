@@ -16,6 +16,8 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoD connection error:", err));
 
+app.get("/version", (req, res) => res.send({ version: "1.0.0" }));
+
 app.use("/api/users", userRoutes);
 app.use("/api/expense", expenseRoute);
 
