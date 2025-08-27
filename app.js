@@ -18,8 +18,8 @@ mongoose
 
 app.get("/version", (req, res) => res.send({ version: "1.0.0" }));
 
-app.use("/api/users", userRoutes);
-app.use("/api/expense", expenseRoute);
+app.use("/users", userRoutes);
+app.use("/expense", expenseRoute);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
