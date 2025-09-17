@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema(
     password: { type: String, required: true },
     accountBalance: { type: Number, default: null },
     refreshToken: { type: String, default: null },
+    profilePic: { type: String, default: null },
   },
   { timestamps: true }
 );

@@ -167,40 +167,35 @@ const setAccountBalance = async (req, res) => {
   }
 };
 
+const uploadProfilePic = async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: "No file uploaded" });
+    }
+
+    const imageUrl = `/uploads/${req.file.filename}`;
+
+    const user = await User.findByIdAndUpdate(
+      req.userId,
+      { profilePic: imageUrl },
+      { new: true }
+    ).select("-password");
+
+    res.json({
+      message: "Profile picture updated successfully",
+      user,
+    });
+  } catch (error) {
+    console.error("Upload error:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 module.exports = {
   register,
   login,
   refreshToken,
   setAccountBalance,
   getMyProfile,
+  uploadProfilePic,
 };
-
-// import React, { useState } from 'react';
-
-// const ListToggle = () => {
-//   const [showList, setShowList] = useState(true);
-
-//   const handleToggle = () => {
-//     setShowList(!showList); // true → false, false → true
-//   };
-
-//   const items = ['Apple', 'Banana', 'Orange', 'Mango'];
-
-//   return (
-//     <div>
-//       <button onClick={handleToggle}>
-//         {showList ? 'Hide List' : 'Show List'}
-//       </button>
-
-//       {showList && (
-//         <ul>
-//           {items.map((item, index) => (
-//             <li key={index}>{item}</li>
-//           ))}
-//         </ul>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default ListToggle;

@@ -20,6 +20,7 @@ app.get("/version", (req, res) => res.send({ version: "1.0.0" }));
 
 app.use("/users", userRoutes);
 app.use("/expense", expenseRoute);
+app.use("/uploads", express.static("uploads"));
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
