@@ -136,7 +136,7 @@ const getReport = async (req, res) => {
     const end = new Date(`${endDate}T23:59:59`);
 
     const expenses = await Expense.find({
-      userId: mongoose.Types.ObjectId(userId),
+      userId: new mongoose.Types.ObjectId(userId),
       createdAt: { $gte: start, $lte: end },
     });
 
@@ -169,8 +169,6 @@ const getReport = async (req, res) => {
     });
   }
 };
-
-
 
 module.exports = {
   expense,
