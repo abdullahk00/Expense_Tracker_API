@@ -170,6 +170,8 @@ const getReport = async (req, res) => {
   }
 };
 
+
+
 module.exports = {
   expense,
   getExpense,
@@ -177,4 +179,5 @@ module.exports = {
   deleteExpense,
   getAllExpense,
   getReport,
+  deleteExpense,
 };
