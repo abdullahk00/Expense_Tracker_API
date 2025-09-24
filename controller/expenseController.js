@@ -135,12 +135,12 @@ const getReport = async (req, res) => {
     const start = new Date(`${startDate}T00:00:00`);
     const end = new Date(`${endDate}T23:59:59`);
 
+    console.log(start, end);
+
     const expenses = await Expense.find({
       userId: new mongoose.Types.ObjectId(userId),
       createdAt: { $gte: start, $lte: end },
     });
-
-    console.log("Found Expenses:", expenses.length);
 
     if (!expenses || expenses.length === 0) {
       return res.status(404).send({ message: "No data found " });
