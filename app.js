@@ -4,6 +4,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes.js");
 const expenseRoute = require("./routes/expenseRoute.js");
+// const orderRoute = require("./routes/orderRoute.js");
 
 dotenv.config();
 const app = express();
@@ -20,6 +21,8 @@ app.get("/version", (req, res) => res.send({ version: "1.0.0" }));
 
 app.use("/users", userRoutes);
 app.use("/expense", expenseRoute);
+// app.use("/order", orderRoute);
+
 app.use("/uploads", express.static("uploads"));
 
 const PORT = process.env.PORT || 8000;
